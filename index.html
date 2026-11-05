@@ -92,6 +92,8 @@ footer { font-size: 0.9rem; color: var(--muted); margin-top: 24px; }
     <p class="kicker">Year in review</p>
     <h1>Nclusive Wrapped 2026</h1>
     <p class="lead">This was the year healthcare information started reaching more people in more ways. Tap through to see what we did.</p>
+    <audio id="music" src="soundtrack.mp3" loop preload="none"></audio>
+<button type="button" class="ghost" id="music-toggle" aria-pressed="false">Play music</button>
   </section>
 
   <!-- 2. Big win -->
@@ -254,7 +256,19 @@ footer { font-size: 0.9rem; color: var(--muted); margin-top: 24px; }
   pick('[data-poll]', 'data-poll', 'nw-2027-priority', function (v) {
     return 'Thanks. You picked: ' + v + ' for 2027.';
   });
-
+var music = document.getElementById('music');
+var musicToggle = document.getElementById('music-toggle');
+musicToggle.addEventListener('click', function () {
+  if (music.paused) {
+    music.play();
+    musicToggle.textContent = 'Pause music';
+    musicToggle.setAttribute('aria-pressed', 'true');
+  } else {
+    music.pause();
+    musicToggle.textContent = 'Play music';
+    musicToggle.setAttribute('aria-pressed', 'false');
+  }
+});
   show(0);
 })();
 </script>
